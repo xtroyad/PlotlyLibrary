@@ -28,10 +28,18 @@ jobs:
 
     - name: Run Introduction Notebook
       run: |
-        set -e
         jupyter nbconvert --to notebook --execute "./01 - Introducción/01 - Introducción.ipynb" --output-dir="./01 - Introducción/output"
+        if [ $? -ne 0 ]; then
+          echo "Error ejecutando el notebook de introducción."
+          exit 1
+        fi
 
     - name: Run Other Notebooks
       run: |
-        set -e
-        find . -name "*.ipynb" ! -name "01 - Introducción.ipynb" -exec jupyter nbconvert --to notebook --execute "{}" --output-dir="{}-output" \;
+        find . -name "*.ipynb" ! -name "01 - Introducción.ipynb" -exec sh -c '
+          jupyter nbconvert --to notebook --execute "{}" --output-dir="{}-output"
+          if [ $? -ne 0 ]; then
+            echo "Error ejecutando el notebook: {}"
+            exit 1
+          fi
+        ' \;
