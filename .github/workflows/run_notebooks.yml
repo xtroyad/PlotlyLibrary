@@ -30,8 +30,6 @@ jobs:
       run: |
         jupyter nbconvert --to notebook --execute "./01 - Introducción/01 - Introducción.ipynb" --output-dir="./01 - Introducción/output"
 
-    - name: Run Other Notebooks
+    - name: Run Notebooks
       run: |
-        for notebook in $(find . -name "*.ipynb" ! -name "01 - Introducción.ipynb"); do
-          jupyter nbconvert --to notebook --execute "$notebook" --output-dir="$(dirname "$notebook")/output"
-        done
+        find . -name "*.ipynb" ! -name "01 - Introducción.ipynb" -exec jupyter nbconvert --to notebook --execute "{}" --output-dir="{}-output" \;
