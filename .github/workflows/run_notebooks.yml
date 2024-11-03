@@ -31,10 +31,10 @@ jobs:
         jupyter nbconvert --to notebook --execute "./01 - Introducción/01 - Introducción.ipynb" --output-dir="./01 - Introducción/output"
       continue-on-error: false
 
-    - name: Run Other Notebooks
+    - name: Run Notebooks
       run: |
         # Encuentra y ejecuta notebooks excluyendo checkpoints y asegurando que sean archivos .ipynb
-        for notebook in $(find . -type f -name "*.ipynb" ! -path "*/.ipynb_checkpoints/*" ! -name "01 - Introducción.ipynb"); do
+        for notebook in $(find . -type f -name "*.ipynb" ! -path "*/.ipynb_checkpoints/*"); do
           echo "Ejecutando $notebook"
           jupyter nbconvert --to notebook --execute "$notebook" --output-dir="$(dirname "$notebook")/output"
           if [ $? -ne 0 ]; then
