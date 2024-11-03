@@ -28,7 +28,7 @@ jobs:
 
     - name: Run Introduction Notebook
       run: |
-        jupyter nbconvert --to notebook --execute "./01 - Introducción/01 - Introducción.ipynb" --output-dir="./01 - Introducción/output"
+        jupyter nbconvert --to notebook --execute "./01 - Introducción/1.1 - Introducción.ipynb" --output-dir="./1.1 - Introducción/output"
       continue-on-error: false
 
     - name: Run Notebooks
