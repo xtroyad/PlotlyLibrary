@@ -34,7 +34,7 @@ jobs:
     - name: Run Notebooks
       run: |
         # Encuentra y ejecuta notebooks excluyendo checkpoints y asegurando que sean archivos .ipynb
-        for notebook in $(find . -type f -name "*.ipynb" ! -path "*/.ipynb_checkpoints/*"); do
+        find . -type f -name "*.ipynb" ! -path "*/.ipynb_checkpoints/*" -print0 | while IFS= read -r -d '' notebook; do
           echo "Ejecutando $notebook"
           jupyter nbconvert --to notebook --execute "$notebook" --output-dir="$(dirname "$notebook")/output"
           if [ $? -ne 0 ]; then
