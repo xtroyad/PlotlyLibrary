@@ -33,10 +33,10 @@ jobs:
 
     - name: Run Other Notebooks
       run: |
-        # Encuentra y ejecuta notebooks excluyendo checkpoints
-        for notebook in $(find . -name "*.ipynb" ! -path "*/.ipynb_checkpoints/*" ! -name "01 - Introducción.ipynb"); do
+        # Encuentra y ejecuta notebooks excluyendo checkpoints y asegurando que sean archivos .ipynb
+        for notebook in $(find . -type f -name "*.ipynb" ! -path "*/.ipynb_checkpoints/*" ! -name "01 - Introducción.ipynb"); do
           echo "Ejecutando $notebook"
-          jupyter nbconvert --to notebook --execute "$notebook" --output-dir="${notebook}-output"
+          jupyter nbconvert --to notebook --execute "$notebook" --output-dir="$(dirname "$notebook")/output"
           if [ $? -ne 0 ]; then
             echo "Error ejecutando el notebook: $notebook"
             exit 1
