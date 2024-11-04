@@ -1,2 +1,7 @@
 .history/*
 datasets/*
+Dockerfile
+requirements.txt
+*/iframe_figures/*
+**/.ipynb_checkpoints/
+.ipynb_checkpoints/
