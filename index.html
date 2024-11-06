@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de Gráficas</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        .graph-container {
+            margin-bottom: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 class="my-4">Dashboard de Gráficas Interactivas</h1>
+        
+        <!-- Selector de Gráficas -->
+        <div class="form-group">
+            <label for="graph-selector">Seleccione el tipo de gráfico:</label>
+            <select id="graph-selector" class="form-control">
+                <option value="basic">Gráficas Básicas</option>
+                <option value="stats">Gráficas Estadísticas</option>
+                <option value="3d">Gráficas 3D</option>
+            </select>
+        </div>
+
+        <!-- Contenedor de Gráficas -->
+        <div id="graphs-container">
+            <!-- Aquí se actualizarán las gráficas según la selección -->
+        </div>
+        
+        <!-- Incrustar Gráficas Básicas -->
+        <div class="graph-container" id="basic-graphs">
+            <h2>Gráficas Básicas</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <iframe src="hmbar_fig.html" width="100%" height="400"></iframe>
+                </div>
+                <div class="col-md-6">
+                    <iframe src="line_fig.html" width="100%" height="400"></iframe>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <iframe src="scatter_fig.html" width="100%" height="400"></iframe>
+                </div>
+                <div class="col-md-6">
+                    <iframe src="per_fig.html" width="100%" height="400"></iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- Incrustar Gráficas Estadísticas -->
+        <div class="graph-container" id="stats-graphs">
+            <h2>Gráficas Estadísticas</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <iframe src="box_fig.html" width="100%" height="400"></iframe>
+                </div>
+                <div class="col-md-6">
+                    <iframe src="hist_fig.html" width="100%" height="400"></iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- Incrustar Gráficas 3D -->
+        <div class="graph-container" id="3d-graphs">
+            <h2>Gráficas 3D</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <iframe src="scatter_3d_fig.html" width="100%" height="400"></iframe>
+                </div>
+                <div class="col-md-6">
+                    <iframe src="saddle_fig.html" width="100%" height="400"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Lógica para cambiar las gráficas cuando se selecciona un tipo de gráfico
+        document.getElementById('graph-selector').addEventListener('change', function() {
+            var selectedValue = this.value;
+            
+            // Ocultar todos los tipos de gráficas
+            document.getElementById('basic-graphs').style.display = 'none';
+            document.getElementById('stats-graphs').style.display = 'none';
+            document.getElementById('3d-graphs').style.display = 'none';
+            
+            // Mostrar el tipo de gráfica seleccionado
+            if (selectedValue === 'basic') {
+                document.getElementById('basic-graphs').style.display = 'block';
+            } else if (selectedValue === 'stats') {
+                document.getElementById('stats-graphs').style.display = 'block';
+            } else if (selectedValue === '3d') {
+                document.getElementById('3d-graphs').style.display = 'block';
+            }
+        });
+
+        // Establecer la vista inicial
+        document.getElementById('graph-selector').value = 'basic';
+        document.getElementById('basic-graphs').style.display = 'block';
+    </script>
+</body>
+</html>
