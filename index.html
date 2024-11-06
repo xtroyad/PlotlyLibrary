@@ -6,17 +6,28 @@
     <title>Dashboard de Gráficas</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
+        html{
+            max-height: 100vh;
+        }
         body {
             padding: 20px;
+            max-height: 100vh;
         }
         .graph-container {
             margin-bottom: 40px;
+        }
+        iframe {
+            width: 100%; /* Aumentar el ancho de las gráficas */
+            height: 400px; /* Ajustar la altura de las gráficas */
+        }
+        .container-fluid {
+            padding-bottom: 30px; /* Espacio adicional en la parte inferior */
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
+    <div class="container-fluid">
         <h1 class="my-4">Dashboard de Gráficas Interactivas</h1>
         
         <!-- Selector de Gráficas -->
@@ -36,47 +47,46 @@
         
         <!-- Incrustar Gráficas Básicas -->
         <div class="graph-container" id="basic-graphs">
-            <h2>Gráficas Básicas</h2>
             <div class="row">
                 <div class="col-md-6">
-                    <iframe src="hmbar_fig.html" width="100%" height="400"></iframe>
+                    <iframe src="bar_fig.html"></iframe>
                 </div>
                 <div class="col-md-6">
-                    <iframe src="line_fig.html" width="100%" height="400"></iframe>
+                    <iframe src="line_fig.html"></iframe>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    <iframe src="scatter_fig.html" width="100%" height="400"></iframe>
+                    <iframe src="scatter_fig.html"></iframe>
                 </div>
                 <div class="col-md-6">
-                    <iframe src="per_fig.html" width="100%" height="400"></iframe>
+                    <iframe src="per_fig.html"></iframe>
                 </div>
             </div>
         </div>
 
         <!-- Incrustar Gráficas Estadísticas -->
-        <div class="graph-container" id="stats-graphs">
+        <div class="graph-container" id="stats-graphs" style="display: none;">
             <h2>Gráficas Estadísticas</h2>
             <div class="row">
                 <div class="col-md-6">
-                    <iframe src="box_fig.html" width="100%" height="400"></iframe>
+                    <iframe src="box_fig.html"></iframe>
                 </div>
                 <div class="col-md-6">
-                    <iframe src="hist_fig.html" width="100%" height="400"></iframe>
+                    <iframe src="hist_fig.html"></iframe>
                 </div>
             </div>
         </div>
 
         <!-- Incrustar Gráficas 3D -->
-        <div class="graph-container" id="3d-graphs">
+        <div class="graph-container" id="3d-graphs" style="display: none;">
             <h2>Gráficas 3D</h2>
             <div class="row">
                 <div class="col-md-6">
-                    <iframe src="scatter_3d_fig.html" width="100%" height="400"></iframe>
+                    <iframe src="scatter_3d_fig.html"></iframe>
                 </div>
                 <div class="col-md-6">
-                    <iframe src="saddle_fig.html" width="100%" height="400"></iframe>
+                    <iframe src="saddle_fig.html"></iframe>
                 </div>
             </div>
         </div>
@@ -102,9 +112,11 @@
             }
         });
 
-        // Establecer la vista inicial
-        document.getElementById('graph-selector').value = 'basic';
-        document.getElementById('basic-graphs').style.display = 'block';
+        // Establecer la vista inicial: solo mostrar gráficas básicas
+        window.onload = function() {
+            document.getElementById('graph-selector').value = 'basic';
+            document.getElementById('basic-graphs').style.display = 'block';
+        };
     </script>
 </body>
 </html>
