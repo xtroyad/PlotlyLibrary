@@ -4,13 +4,15 @@
 
 ¡Bienvenido a este proyecto de aprendizaje sobre **Plotly**! Este material didáctico está diseñado para ayudarte a comprender y utilizar esta poderosa biblioteca de visualización de datos en Python. A través de una serie de notebooks de Jupyter, aprenderás a crear visualizaciones interactivas y personalizadas, además de explorar diversas funcionalidades que ofrece Plotly.
 
-### 🎯 Objetivos del Proyecto
+## 🎯 Objetivos del Proyecto
 
 - Proporcionar una introducción clara y concisa a la biblioteca Plotly.
 - Explicar cómo instalar y configurar el entorno de trabajo.
 - Presentar ejemplos prácticos y ejercicios para afianzar el aprendizaje.
 
 <img src="img/anima.gif" alt="Descripción de la animación" style="width: 80%; height: auto;">
+
+[Despliegue con Ejemplos]( https://xtroyad.github.io/PlotlyLibrary/)
 
 ## 🛠️ a. Guía de Instalación
 
