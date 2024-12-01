@@ -26,9 +26,10 @@ jobs:
         python -m pip install --upgrade pip
         pip install jupyter nbconvert
 
-    - name: Run Introduction Notebook
+    - name: Run Introduction Notebooks
       run: |
-        jupyter nbconvert --to notebook --execute "./01 - Introducción/1.1 - Introducción.ipynb" --output-dir="./1.1 - Introducción/output"
+        jupyter nbconvert --to notebook --execute "./01 - Introducción/1.1 - Introducción.ipynb" --output-dir="./01 - Introducción/output"
+        jupyter nbconvert --to notebook --execute "./01 - Introducción/1.2 - BBDD.ipynb" --output-dir="./01 - Introducción/output"
       continue-on-error: false
 
     - name: Run Notebooks
